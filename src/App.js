@@ -17,7 +17,8 @@ import {
   UseImperativeHandle,
   ClsxAndClassnames,
   ReactRouterV6,
-  ReactRouterTutorial
+  ReactRouterTutorial,
+  ReduxTutorial
 } from './Lessions';
 
 function App() {
@@ -25,7 +26,7 @@ function App() {
   return (
       <div>
         <button onClick={() => setIsShowListItem(!isShowListItem)}>Toggle</button>
-        {isShowListItem && <ReactRouterTutorial />}
+        {isShowListItem && <ReduxTutorial />}
       </div>
   );
 }

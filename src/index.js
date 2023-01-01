@@ -6,7 +6,8 @@ import reportWebVitals from './reportWebVitals';
 import { ThemeContextProvider } from './Lessions/47-ThemeContext';
 import { TodoProvider } from './Lessions/48-GlobalStateWithContextAndUseReducer/store';
 import { BrowserRouter } from 'react-router-dom'
-
+import { Provider } from 'react-redux'
+import store from './Lessions/ReduxTutorial/store';
 // function emitComment(id) {
 //   setInterval(() => {
 //     window.dispatchEvent(new CustomEvent(`lession-${id}`, {
@@ -23,11 +24,12 @@ import { BrowserRouter } from 'react-router-dom'
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   // <React.StrictMode>
-    
+  <Provider store={store}>
     <BrowserRouter>
       <App />
     </BrowserRouter>
-    
+  </Provider>
+
   // </React.StrictMode>
 );
 

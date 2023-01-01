@@ -14,5 +14,6 @@ export { default as UseImperativeHandle } from './49-UseImperativeHandle'
 export { default as ClsxAndClassnames } from './52-ClsxAndClassnames'
 export { default as ReactRouterV6 } from './54-ReactRouterV6/pages/ReactRouteterV6'
 export { default as ReactRouterTutorial } from './ReactRouterTutorial'
+export { default as ReduxTutorial } from './ReduxTutorial'
 
 
