@@ -1,13 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
+import App from '~/App';
 import reportWebVitals from './reportWebVitals';
 import { ThemeContextProvider } from './Lessions/47-ThemeContext';
 import { TodoProvider } from './Lessions/48-GlobalStateWithContextAndUseReducer/store';
 import { BrowserRouter } from 'react-router-dom'
 import { Provider } from 'react-redux'
-import store from './Lessions/ReduxTutorial/store';
+import store from './Lessions/ReduxToolkitTutorial/store-redux-toolkit';
+// import store from './Lessions/ReduxTutorial/store';
+import GlobalStyles from '~/components/GlobalStyles';
+
 // function emitComment(id) {
 //   setInterval(() => {
 //     window.dispatchEvent(new CustomEvent(`lession-${id}`, {
@@ -25,9 +27,9 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   // <React.StrictMode>
   <Provider store={store}>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
+      <GlobalStyles>
+        <App />
+      </GlobalStyles>
   </Provider>
 
   // </React.StrictMode>

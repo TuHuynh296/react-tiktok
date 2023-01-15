@@ -1,9 +1,10 @@
 import { Routes, Route } from 'react-router-dom'
-import { About, Home, Login, Navbar, OrderSummary, PageNotFound, Products, Profile, RequireAuth } from './components'
+import { Home, Login, Navbar, OrderSummary, PageNotFound, Products, Profile, RequireAuth } from './components'
 import { ProductFeatured, ProductNew } from './components/Products';
 import { Admin, UserDetail, Users } from './components/Users';
 import { Suspense, lazy } from 'react';
-import { AuthProvider } from './components/auth';
+import { AuthProvider } from '~/Lessions/ReactRouterTutorial/components/auth';
+
 
 const LazyAboutComponent = lazy(() => import('./components/About'))
 function ReactRouterTutorial() {
