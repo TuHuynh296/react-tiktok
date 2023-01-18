@@ -1,17 +1,45 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCircleXmark, faMagnifyingGlass, faPlus, faSpinner } from '@fortawesome/free-solid-svg-icons'
-import classNames from 'classnames/bind'
-import styles from './Header.module.scss'
-import images from '~/assets/images'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faA, faCircleQuestion, faCircleXmark, faEllipsisVertical, faKeyboard, faMagnifyingGlass, faMoon, faPlus, faSpinner } from '@fortawesome/free-solid-svg-icons'
+import classNames from 'classnames/bind'
+//
+import styles from './Header.module.scss'
+import images from '~/assets/images'
 import Tippy from '@tippyjs/react/headless';
 import 'tippy.js/dist/tippy.css'; // optional
-import { CustomButton, Popover } from '~/components'
+import { CustomButton, Popover, StepMenu } from '~/components'
 
 const cx = classNames.bind(styles)
 // dùng bind giúp truy cập class với tên có chứa '-' vd như: cx('post-item')
 
+
+const MENU_ACTIONS = [
+    {
+        icon: <FontAwesomeIcon icon={faA} />,
+        title: 'Tiếng Việt',
+        nextStep: {
+            title: 'Ngôn ngữ',
+            content: <div>
+                Đây là content
+            </div>,
+        }
+    },
+    {
+        icon: <FontAwesomeIcon icon={faCircleQuestion} />,
+        title: 'Phản hồi và trợ giúp',
+        to: 'feedback'
+    },
+    {
+        icon: <FontAwesomeIcon icon={faKeyboard} />,
+        title: 'Phím tắt trên bàn phím',
+    },
+    {
+        icon: <FontAwesomeIcon icon={faMoon} />,
+        title: 'Chế độ tối',
+        extraAction: null,
+    }
+]
 
 function Header() {
     const [searchValue, setSearchValue] = useState('');
@@ -56,6 +84,8 @@ function Header() {
             <img src={images.logo} alt="Tiktok" />
             <Tippy
                 interactive
+                visible={searchResultVisible}
+                onClickOutside={() => { setSearchResultVisible(false) }}
                 render={attrs => (
                     <div
                         className={cx('search-result')}
@@ -100,9 +130,7 @@ function Header() {
                             </div>
                         </Popover>
                     </div>
-                )}
-                visible={searchResultVisible}
-                onClickOutside={() => { setSearchResultVisible(false) }}>
+                )}>
                 <div className={cx('search-container')}>
                     <div className={cx('search-input-wrapper')}>
                         <div className={cx('search-input')}>
@@ -159,10 +187,27 @@ function Header() {
 
                 <CustomButton
                     type='danger'
-                    rounded
-                    className={cx('custom-button', 'custom-2')}>
+                    rounded>
                     Đăng nhập
                 </CustomButton>
+
+                <Tippy
+                    interactive
+                    delay={[0, 500]}
+                    render={(attr) => (
+                        <div
+                            tabIndex="-1"
+                            {...attr}>
+                            <Popover width={223}>
+                                <StepMenu items={MENU_ACTIONS} />
+                            </Popover>
+                        </div>
+                    )}>
+                    <div className={cx('more-action-icon')}>
+                        <FontAwesomeIcon
+                            icon={faEllipsisVertical} />
+                    </div>
+                </Tippy>
             </div>
         </div >
     </header >

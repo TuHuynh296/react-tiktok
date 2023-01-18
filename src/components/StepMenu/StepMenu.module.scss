@@ -1,0 +1,30 @@
+.item {
+    cursor: pointer;
+    display: grid;
+    grid-template-columns: 34px 1fr;
+    align-items: center;
+    padding: 4px;
+
+    &:hover {
+        background-color: #f8f8f8;
+    }
+}
+
+.icon {
+    justify-self: center;
+}
+
+
+.next-step-header {
+    display: flex;
+    align-items: center;
+
+    .back-icon {
+        width: 24px;
+    }
+
+    .next-step-content {
+        text-align: center;
+        width: 100%;
+    }
+}
