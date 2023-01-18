@@ -1,0 +1,134 @@
+.wrapper {
+    --primary-color: #007bff;
+    --secondary-color: #e3e3e4;
+    --success-color: #28a745;
+    --danger-color: #fe2c55;
+    --warning-color: #ffc107;
+    --hover-color: #f8f8f8;
+
+    background-color: var(--white);
+    border: 1px solid;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    border-radius: 4px;
+    padding: 6px;
+    cursor: pointer;
+    user-select: none;
+
+    div, span {
+        white-space: nowrap;
+    }
+}
+
+a {
+    text-decoration: none;
+    font-size: 12px;
+}
+
+.text {
+    border: 0px;
+    background-color: var(--white);
+    text-decoration: underline;
+}
+
+.disabled {
+    pointer-events: none;
+    opacity: 0.8;
+}
+
+@mixin button-hover ($current-color) {
+    &:hover {
+        background-color: color-mix($current-color) !important;
+    }
+}
+
+.primary {
+    background-color: var(--primary-color);
+    color: var(--white);
+
+    @include button-hover(--primary-color);
+}
+
+.secondary {
+    background-color: var(--secondary-color);
+    color: var(--white);
+
+    @include button-hover(--secondary-color);
+}
+
+.success {
+    background-color: var(--success-color);
+    color: var(--white);
+}
+
+.danger {
+    background-color: var(--danger-color);
+    color: var(--white);
+
+    &:hover {
+        background-color: #ef2950;
+    }
+}
+
+.warning {
+    background-color: var(--warning-color);
+
+    @include button-hover(--warning-color);
+}
+
+.outline-primary {
+    border-color: var(--primary-color);
+
+    @include button-hover(--primary-color);
+}
+
+.outline-secondary {
+    border-color: var(--secondary-color);
+
+    @include button-hover(--secondary-color);
+}
+
+.outline-success {
+    border-color: var(--success-color);
+
+    @include button-hover(--success-color);
+}
+
+.outline-danger {
+    border-color: var(--danger-color);
+    color: var(--danger-color);
+
+    &:hover {
+        background-color: #fff3f5;
+    }
+}
+
+.outline-warning {
+    border-color: var(--warning-color);
+
+    @include button-hover(--warning-color);
+}
+
+.loading {
+    margin-left: 4px;
+    animation: spin 1s linear infinite;
+}
+
+.rounded {
+    border-radius: 16px;
+    border-color: #e6e6e8;
+    &:hover {
+        border-color: #d6d7d9;
+    }
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
